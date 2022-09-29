@@ -1,18 +1,20 @@
-import { InputForm } from './InputForm/InputForm';
-import { ContactsList } from './ContactsList/ContactsList';
-import { Filter } from './Filter/Filter';
-import { Loader } from './Loader/Loader';
+import { Routes, Route } from 'react-router-dom';
 import { AppBar } from './AppBar/AppBar';
+import { Contacts } from './Contacts/Contacts';
+import { Loader } from './Loader/Loader';
+import { Login } from './Login/Login';
+import { Register } from './Register/Register';
 
 function App() {
   return (
     <>
       <AppBar />
-      <h1>Phonebook</h1>
-      <InputForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactsList />
+      <Routes>
+        <Route path="/" element={<p>Welcome to our service!</p>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Routes>
       <Loader />
     </>
   );
