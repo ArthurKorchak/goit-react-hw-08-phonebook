@@ -15,8 +15,8 @@ const authSlice = createSlice({
       state.isLoading = true;
     },
     [getUser.fulfilled](state, action) {
-      state.name = action.payload.name;
-      state.email = action.payload.email;
+      state.name = action.payload?.name;
+      state.email = action.payload?.email;
       state.isAuth = true;
       state.isLoading = false;
     },

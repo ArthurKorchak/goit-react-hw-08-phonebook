@@ -5,13 +5,18 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const getUser = createAsyncThunk(
   "auth/getUser", async (_, thunkAPI) => {
-    try {
-      const response = await axios.get("/users/current");
-      console.log(response.data);
-      return response.data;
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e.message);
+    const token = thunkAPI.getState().auth.token;
+    if (token) {
+      axios.defaults.headers.common.Authorization = token;
+      try {
+        const response = await axios.get("/users/current");
+        console.log(response.data);
+        return response.data;
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+      };
     };
+    return thunkAPI.rejectWithValue();
   }
 );
 
@@ -43,7 +48,7 @@ export const logout = createAsyncThunk(
   "auth/logout", async (_, thunkAPI) => {
     try {
       const response = await axios.post("/users/logout");
-      axios.defaults.headers.common.Authorization = '';
+      axios.defaults.headers.common.Authorization = null;
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

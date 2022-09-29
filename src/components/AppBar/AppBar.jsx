@@ -1,10 +1,10 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/operations';
+import { useSelector } from 'react-redux';
+import { UserMenu } from './UserMenu';
 import s from './AppBar.module.css';
 
 export function AppBar() {
-  const dispatch = useDispatch();
+  const isAuth = useSelector(state => state.auth.isAuth);
 
   return (
     <header>
@@ -12,12 +12,10 @@ export function AppBar() {
         📓 Phonebook APP
       </Link>
       <div className={s.navWrapper}>
-        <NavLink to="/register">Register</NavLink>
-        <NavLink to="/contacts">Contacts</NavLink>
-        <NavLink to="/login">Log In</NavLink>
-        <button type="button" onClick={() => dispatch(logout())}>
-          Log Out
-        </button>
+        {!isAuth ? <NavLink to="/register">Register</NavLink> : null}
+        {isAuth ? <NavLink to="/contacts">Contacts</NavLink> : null}
+        {!isAuth ? <NavLink to="/login">Log In</NavLink> : null}
+        {isAuth ? <UserMenu /> : null}
       </div>
     </header>
   );
