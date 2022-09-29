@@ -3,9 +3,10 @@ import { useSelector } from 'react-redux';
 import styles from './Loader.module.css';
 
 export function Loader() {
-  const isLoading = useSelector(state => state.items.isLoading);
+  const authIsLoading = useSelector(state => state.auth.isLoading);
+  const itemsIsLoading = useSelector(state => state.items.isLoading);
 
-  if (isLoading) {
+  if (authIsLoading || itemsIsLoading) {
     return (
       <div className={styles.loader}>
         <InfinitySpin width="200" color="#4fa94d" />
