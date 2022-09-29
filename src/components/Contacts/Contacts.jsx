@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
 import { ContactsList } from '../ContactsList/ContactsList';
 import { Filter } from '../Filter/Filter';
 import { InputForm } from '../InputForm/InputForm';
@@ -18,6 +17,6 @@ export function Contacts() {
       </>
     );
   } else {
-    return <Navigate to="/" replace={true} />;
+    return <p>Log in or register to join the service!</p>;
   }
 }

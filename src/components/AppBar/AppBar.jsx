@@ -8,13 +8,25 @@ export function AppBar() {
 
   return (
     <header>
-      <Link to="/" className={s.logo}>
-        📓 Phonebook APP
+      <Link to="/" className={s.title}>
+        <span className={s.logo}>📓</span> Phonebook APP
       </Link>
       <div className={s.navWrapper}>
-        {!isAuth ? <NavLink to="/register">Register</NavLink> : null}
-        {isAuth ? <NavLink to="/contacts">Contacts</NavLink> : null}
-        {!isAuth ? <NavLink to="/login">Log In</NavLink> : null}
+        {!isAuth ? (
+          <NavLink to="/register" className={s.link}>
+            Register
+          </NavLink>
+        ) : null}
+        {isAuth ? (
+          <NavLink to="/contacts" className={s.link}>
+            Contacts
+          </NavLink>
+        ) : null}
+        {!isAuth ? (
+          <NavLink to="/login" className={s.link}>
+            Log In
+          </NavLink>
+        ) : null}
         {isAuth ? <UserMenu /> : null}
       </div>
     </header>

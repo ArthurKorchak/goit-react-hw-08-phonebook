@@ -40,6 +40,6 @@ export function Login() {
       </form>
     );
   } else {
-    return <Navigate to="/" replace={true} />;
+    return <Navigate to="/contacts" replace={true} />;
   }
 }
