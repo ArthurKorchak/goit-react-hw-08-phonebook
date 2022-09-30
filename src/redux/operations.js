@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from 'react-toastify';
 import axios from "axios";
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -23,9 +24,11 @@ export const register = createAsyncThunk(
   "auth/register", async ({name, email, password}, thunkAPI) => {
     try {
       const response = await axios.post("/users/signup", { name, email, password });
-      axios.defaults.headers.common.Authorization = `bearer ${response.data.token}`;
+      axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+      toast.success("Welcome new user!");
       return response.data;
     } catch (e) {
+      toast.error("Invalid input, try to enter another data.");
       return thunkAPI.rejectWithValue(e.message);
     };
   }
@@ -36,8 +39,10 @@ export const login = createAsyncThunk(
     try {
       const response = await axios.post("/users/login", { email, password });
       axios.defaults.headers.common.Authorization = `Bearer ${response.data.token}`;
+      toast.success("Welcome!");
       return response.data;
     } catch (e) {
+      toast.error("Invalid input, try to enter another data.");
       return thunkAPI.rejectWithValue(e.message);
     };
   }

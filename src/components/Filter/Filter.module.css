@@ -1,10 +1,32 @@
-.label {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 5px;
+.form {
+    width: max-content;
+    padding: 10px 15px 15px 15px;
+    border: 1px solid #112D32;
+    border-radius: 10px;
+    box-shadow: -5px 5px 5px #45717c;
 }
 
-.label input {
-    width: 320px;
-    height: 25px;
+.label {
+    display: flex;
+    font-weight: 500;
+    flex-direction: column;
+    color: #112D32;
+    gap: 3px;
+}
+
+.input {
+    padding: 0 5px;
+    height: 31px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e4b53 !important;
+    border: 1px solid #112D32;
+    border-radius: 8px;
+    background-color: #a6dddc !important;
+    width: 200px;
+}
+
+.input:hover,
+.input:focus {
+    outline: none;
 }

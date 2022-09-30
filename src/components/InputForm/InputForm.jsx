@@ -43,6 +43,7 @@ export function InputForm() {
           required
           value={name}
           onChange={inputOperator}
+          className={s.input}
         />
       </label>
       <label className={s.label}>
@@ -55,9 +56,12 @@ export function InputForm() {
           required
           value={number}
           onChange={inputOperator}
+          className={s.input}
         />
       </label>
-      <button type="submit">Add contact</button>
+      <button type="submit" className={s.button}>
+        Add contact
+      </button>
     </form>
   );
 }

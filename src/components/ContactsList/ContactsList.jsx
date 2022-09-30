@@ -13,20 +13,21 @@ export function ContactsList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  return (
-    <ul className={s.contactsList}>
-      {currentContacts.map(({ id, name, phone }) => (
-        <li key={id}>
-          <div className={s.contact}>
-            <p>
-              {name}: <span>{phone}</span>
-            </p>
-            <button type="button" onClick={() => dispatch(deleteContact(id))}>
+  if (currentContacts.length > 0) {
+    return (
+      <ul className={s.contactsList}>
+        {currentContacts.map(({ id, name, number }) => (
+          <li key={id}>
+            <div className={s.contact}>
+              <p className={s.text}>Name: {name}</p>
+              <p className={s.text}>Phone: {number}</p>
+            </div>
+            <button type="button" onClick={() => dispatch(deleteContact(id))} className={s.button}>
               Delete
             </button>
-          </div>
-        </li>
-      ))}
-    </ul>
-  );
+          </li>
+        ))}
+      </ul>
+    );
+  }
 }

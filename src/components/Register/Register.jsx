@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { register } from '../../redux/operations';
+import s from './Register.module.css';
 
 export function Register() {
   const [name, setName] = useState('');
@@ -32,8 +33,8 @@ export function Register() {
 
   if (!isAuth) {
     return (
-      <form onSubmit={formSubmit}>
-        <label>
+      <form onSubmit={formSubmit} className={s.form}>
+        <label className={s.label}>
           Username
           <input
             type="text"
@@ -44,17 +45,27 @@ export function Register() {
             required
             value={name}
             onChange={inputOperator}
+            className={s.input}
           />
         </label>
-        <label>
+        <label className={s.label}>
           Email
-          <input type="email" name="email" required value={email} onChange={inputOperator} />
+          <input type="email" name="email" required value={email} onChange={inputOperator} className={s.input} />
         </label>
-        <label>
+        <label className={s.label}>
           Password
-          <input type="password" name="password" required value={password} onChange={inputOperator} />
+          <input
+            type="password"
+            name="password"
+            required
+            value={password}
+            onChange={inputOperator}
+            className={s.input}
+          />
         </label>
-        <button type="submit">Log in</button>
+        <button type="submit" className={s.button}>
+          Register
+        </button>
       </form>
     );
   } else {

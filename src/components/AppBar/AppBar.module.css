@@ -3,15 +3,17 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 50px;
-  border-bottom: 2px solid #D8C3A5;
-  background-color: #EAE7DC;
+  padding: 15px 30px;
+  border-bottom: 2px solid #112D32;
+  background-color: #88BDBC;
 }
 
 .title {
   text-decoration: none;
-  color: #000;
+  color: #112D32;
   font-size: 32px;
+  font-weight: 700;
+  text-shadow: -3px 3px 5px #45717c;
 }
 
 .logo {
@@ -26,8 +28,11 @@ header {
 
 .link {
   text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
   padding: 8px 15px;
-  color: #8E8D8A;
+  color: #88BDBC;
   border-radius: 8px;
-  background-color: #D8C3A5;
+  background-color: #112D32;
+  box-shadow: -3px 3px 5px #45717c;
 }
