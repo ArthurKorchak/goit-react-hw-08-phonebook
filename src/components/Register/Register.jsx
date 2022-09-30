@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { selectIsAuth } from 'redux/selector';
 import { register } from '../../redux/operations';
 import s from './Register.module.css';
 
@@ -9,7 +10,7 @@ export function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const isAuth = useSelector(selectIsAuth);
 
   const inputOperator = event => {
     if (event.target.name === 'name') {

@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact, fetchContacts } from 'redux/operations';
+import { selectGetFilterValue, selectGetItemsContacts } from 'redux/selector';
 import s from './ContactsList.module.css';
 
 export function ContactsList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.items.contacts);
-  const filter = useSelector(state => state.filter);
+  const contacts = useSelector(selectGetItemsContacts);
+  const filter = useSelector(selectGetFilterValue);
   const currentContacts = contacts.filter(item => item.name.toLowerCase().includes(filter));
 
   useEffect(() => {

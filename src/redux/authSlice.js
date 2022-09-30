@@ -21,6 +21,9 @@ const authSlice = createSlice({
       state.isLoading = false;
     },
     [getUser.rejected](state) {
+      state.token = null;
+      state.name = '';
+      state.email = '';
       state.isLoading = false;
     },
     [register.pending](state) {

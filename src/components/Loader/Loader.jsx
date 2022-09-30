@@ -1,10 +1,11 @@
 import { InfinitySpin } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
+import { selectAuthIsLoading, selectItemsIsLoading } from 'redux/selector';
 import styles from './Loader.module.css';
 
 export function Loader() {
-  const authIsLoading = useSelector(state => state.auth.isLoading);
-  const itemsIsLoading = useSelector(state => state.items.isLoading);
+  const authIsLoading = useSelector(selectAuthIsLoading);
+  const itemsIsLoading = useSelector(selectItemsIsLoading);
 
   if (authIsLoading || itemsIsLoading) {
     return (

@@ -1,10 +1,11 @@
 import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { UserMenu } from './UserMenu';
+import { selectIsAuth } from 'redux/selector';
 import s from './AppBar.module.css';
 
 export function AppBar() {
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const isAuth = useSelector(selectIsAuth);
 
   return (
     <header>

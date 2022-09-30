@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
+import { selectIsAuth } from 'redux/selector';
 import { ContactsList } from '../ContactsList/ContactsList';
 import { Filter } from '../Filter/Filter';
 import { InputForm } from '../InputForm/InputForm';
 import s from './Contacts.module.css';
 
 export function Contacts() {
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const isAuth = useSelector(selectIsAuth);
 
   if (isAuth) {
     return (
@@ -18,6 +19,6 @@ export function Contacts() {
       </div>
     );
   } else {
-    return <p className={s.title}>Log in or register to join the service!</p>;
+    return <p className={s.title}>Log in to join the service!</p>;
   }
 }

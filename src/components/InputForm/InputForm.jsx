@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddContact } from 'redux/operations';
+import { selectGetItemsContacts } from 'redux/selector';
 import s from './InputForm.module.css';
 
 export function InputForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(state => state.items.contacts);
+  const contacts = useSelector(selectGetItemsContacts);
   const dispatch = useDispatch();
 
   const inputOperator = event => {

@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { selectGetEmail } from 'redux/selector';
 import { logout } from '../../redux/operations';
 import s from './UserMenu.module.css';
 
 export function UserMenu() {
   const dispatch = useDispatch();
-  const email = useSelector(state => state.auth.email);
+  const email = useSelector(selectGetEmail);
 
   return (
     <div className={s.userMenu}>

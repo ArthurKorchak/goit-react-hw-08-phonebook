@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
+import { selectIsAuth } from 'redux/selector';
 import { login } from '../../redux/operations';
 import s from './Login.module.css';
 
@@ -8,7 +9,7 @@ export function Login() {
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const isAuth = useSelector(selectIsAuth);
 
   const inputOperator = event => {
     if (event.target.name === 'email') {
